@@ -1,4 +1,6 @@
-const TodoList = () => {
+import * as React from "react";
+
+const TodoList = ({ todos }) => {
   return (
     <>
       <div>...</div>

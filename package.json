@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "antd": "^5.10.2",
     "dotenv": "^16.3.1",
     "mongoose": "^7.6.3",
     "next": "14.0.0",
