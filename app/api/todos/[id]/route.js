@@ -12,9 +12,9 @@ export async function GET(request, { params }) {
 export async function PUT(request, { params }) {
   const { id } = params;
   const {
-    newTodo: todo,
-    newCategory: category,
-    newDeadline: deadline,
+    todo: todo,
+    category: category,
+    deadline: deadline,
   } = await request.json();
 
   await connectMongoDB();

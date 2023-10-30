@@ -4,7 +4,7 @@ import { Button, DatePicker, Form, Input, Select, message } from "antd";
 import React, { useState } from "react";
 
 const initialState = {
-  task: "",
+  todo: "",
   category: "",
   deadline: "",
 };
@@ -23,7 +23,7 @@ const AddTodo = () => {
   const handleAddTodo = async (e) => {
     e.preventDefault();
 
-    if (!newTodo.task || !newTodo.category || !newTodo.deadline) {
+    if (!newTodo.todo || !newTodo.category || !newTodo.deadline) {
       message.error("Please fill out all fields :(");
       return;
     }
@@ -38,7 +38,6 @@ const AddTodo = () => {
       });
 
       if (response.ok) {
-        console.log("newTodo:", newTodo);
         message.success("To Do successfully added :)");
         setNewTodo(initialState);
       } else {
@@ -58,8 +57,8 @@ const AddTodo = () => {
       <Form.Item label="Todo" name="todo">
         <Input
           placeholder="Enter todo"
-          value={newTodo.task}
-          onChange={(e) => setNewTodo({ ...newTodo, task: e.target.value })}
+          value={newTodo.todo}
+          onChange={(e) => setNewTodo({ ...newTodo, todo: e.target.value })}
         />
       </Form.Item>
 
