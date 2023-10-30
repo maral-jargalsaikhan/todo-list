@@ -69,6 +69,7 @@ const UpdateTodo = ({ selectedTodo }) => {
           setIsModalOpen(true);
           loadTodo();
         }}
+        className="flex items-center justify-center"
       >
         <EditOutlined />
       </Button>

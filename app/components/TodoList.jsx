@@ -25,7 +25,7 @@ const TodoList = ({ todos }) => {
     }
 
     return (
-      <div className="flex">
+      <div className="flex justify-center gap-2">
         <UpdateTodo selectedTodo={selectedTodo} />
         <DeleteTodo id={selectedTodo._id} />
       </div>
@@ -34,11 +34,19 @@ const TodoList = ({ todos }) => {
 
   const columns = [
     {
+      title: "№",
+      dataIndex: "no",
+      key: "no",
+      render: (text, record, index) => index + 1,
+    },
+    {
       title: "Status",
       dataIndex: "status",
       key: "status",
       render: (status) => (
         <Tag
+          bordered={false}
+          className="flex justify-center"
           color={statusStyle.find((status) => status.status === status)?.color}
         >
           {status}
@@ -54,6 +62,7 @@ const TodoList = ({ todos }) => {
       render: (category) => (
         <Tag
           bordered={false}
+          className="flex justify-center"
           color={
             categoryTags.find((tag) => tag.category === category)?.color ||
             "default"

@@ -39,12 +39,15 @@ const Home = () => {
       <h1 className="mt-8 font-semibold text-lg">Demo for Todo List App</h1>
       <div>
         <AddTodo />
-        <Segmented
-          options={["all", "pending", "processing", "done"]}
-          value={selectedSegment}
-          onChange={(value) => setSelectedSegment(value)}
-          className="my-3"
-        />
+        <div className="w-full flex justify-center">
+          <Segmented
+            options={["all", "pending", "processing", "done"]}
+            value={selectedSegment}
+            onChange={(value) => setSelectedSegment(value)}
+            className="my-3 bg-transparent"
+          />
+        </div>
+
         <TodoList todos={filteredTodos} />
       </div>
     </main>
