@@ -13,6 +13,12 @@ const categoryOptions = [
   { label: "Other", value: "Other" },
 ];
 
+const statusOptions = [
+  { label: "pending", value: "pending" },
+  { label: "processing", value: "processing" },
+  { label: "done", value: "done" },
+];
+
 const UpdateTodo = ({ selectedTodo }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [updatedTodo, setUpdatedTodo] = useState({ selectedTodo });
@@ -23,13 +29,16 @@ const UpdateTodo = ({ selectedTodo }) => {
 
   const updateHandler = async () => {
     try {
-      const res = await fetch(`${API_URL}/api/todos/${selectedTodo._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedTodo),
-      });
+      const res = await fetch(
+        `http://localhost:3000/api/todos/${selectedTodo._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedTodo),
+        }
+      );
       message.success("Todo updated");
       setIsModalOpen(false);
     } catch (error) {
@@ -39,9 +48,12 @@ const UpdateTodo = ({ selectedTodo }) => {
 
   const loadTodo = async () => {
     try {
-      const res = await fetch(`%${API_URL}/api/todos/${selectedTodo._id}`, {
-        cache: "no-store",
-      });
+      const res = await fetch(
+        `http://localhost:3000/api/todos/${selectedTodo._id}`,
+        {
+          cache: "no-store",
+        }
+      );
       const data = await res.json();
       setUpdatedTodo(data);
     } catch (error) {
@@ -95,13 +107,14 @@ const UpdateTodo = ({ selectedTodo }) => {
             />
           </Form.Item>
 
-          {/* <Button
-            type="default"
-            className="flex items-center justify-center"
-            onClick={updateHandler}
-          >
-            Save
-          </Button> */}
+          <Form.Item label="Status" name="status">
+            <Select
+              options={statusOptions}
+              placeholder={selectedTodo.status}
+              style={{ width: 150 }}
+              onChange={(e) => setUpdatedTodo({ ...selectedTodo, status: e })}
+            />
+          </Form.Item>
         </Form>
       </Modal>
     </>

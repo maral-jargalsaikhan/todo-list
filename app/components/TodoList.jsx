@@ -12,6 +12,12 @@ const categoryTags = [
   { category: "Other", color: "warning" },
 ];
 
+const statusStyle = [
+  { status: "pending", color: "f50" },
+  { status: "processing", color: "#2db7f5" },
+  { status: "done", color: "#87d068" },
+];
+
 const TodoList = ({ todos }) => {
   function renderAction(selectedTodo) {
     if (!selectedTodo) {
@@ -27,6 +33,18 @@ const TodoList = ({ todos }) => {
   }
 
   const columns = [
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (status) => (
+        <Tag
+          color={statusStyle.find((status) => status.status === status)?.color}
+        >
+          {status}
+        </Tag>
+      ),
+    },
     { title: "Todo", dataIndex: "todo", key: "todo" },
     { title: "Deadline", dataIndex: "deadline", key: "deadline" },
     {
@@ -53,14 +71,13 @@ const TodoList = ({ todos }) => {
   ];
 
   return (
-    <div className="w-full mt-3 shadow-md rounded-lg">
+    <div className="w-full shadow-md rounded-lg">
       {todos && todos.length > 0 ? (
         <Table
           columns={columns}
           dataSource={todos}
           pagination={false}
           rowKey={(record) => record.id}
-          rowSelection={{ type: "checkbox" }}
         />
       ) : (
         <Empty />

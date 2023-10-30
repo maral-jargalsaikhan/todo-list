@@ -6,7 +6,7 @@ const API_URL = process.env.API_URL;
 const DeleteTodo = ({ id }) => {
   const deleteTodo = async () => {
     try {
-      await fetch(`${API_URL}/api/todos?id=${id}`, {
+      await fetch(`http://localhost:3000/api/todos?id=${id}`, {
         method: "DELETE",
       });
       message.success("Todo successfully deleted :)");

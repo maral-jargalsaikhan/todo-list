@@ -5,6 +5,7 @@ const todoSchema = new Schema(
     todo: String,
     category: String,
     deadline: String,
+    status: String,
   },
   {
     timestamps: true,

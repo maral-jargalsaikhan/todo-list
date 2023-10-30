@@ -11,9 +11,9 @@ export async function GET() {
 
 export async function POST(request) {
   //   console.log("POST REQUEST");
-  const { todo, category, deadline } = await request.json();
+  const { todo, category, deadline, status } = await request.json();
   await connectMongoDB();
-  await Todo.create({ todo, category, deadline });
+  await Todo.create({ todo, category, deadline, status });
   return NextResponse.json({ message: "Todo created" }, { status: 201 });
 }
 

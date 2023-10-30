@@ -15,10 +15,11 @@ export async function PUT(request, { params }) {
     todo: todo,
     category: category,
     deadline: deadline,
+    status: status,
   } = await request.json();
 
   await connectMongoDB();
-  await Todo.findByIdAndUpdate(id, { todo, category, deadline });
+  await Todo.findByIdAndUpdate(id, { todo, category, deadline, status });
 
   return NextResponse.json({ message: "Todo updated" }, { status: 200 });
 }

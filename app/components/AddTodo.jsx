@@ -9,6 +9,7 @@ const initialState = {
   todo: "",
   category: "",
   deadline: "",
+  status: "pending",
 };
 
 const categoryOptions = [
@@ -31,7 +32,7 @@ const AddTodo = () => {
     }
 
     try {
-      const response = await fetch(`${API_URL}/api/todos`, {
+      const response = await fetch(`http://localhost:3000/api/todos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
