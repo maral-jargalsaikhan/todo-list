@@ -3,6 +3,8 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Button, DatePicker, Form, Input, Select, message } from "antd";
 import React, { useState } from "react";
 
+const API_URL = process.env.API_URL;
+
 const initialState = {
   todo: "",
   category: "",
@@ -29,7 +31,7 @@ const AddTodo = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/todos", {
+      const response = await fetch(`${API_URL}/api/todos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

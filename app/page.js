@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 
+const API_URL = process.env.API_URL;
+
 const Home = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/todos", {
+        const response = await fetch(`${API_URL}/api/todos`, {
           cache: "no-store",
         });
 
